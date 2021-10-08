@@ -19,26 +19,21 @@ namespace DevMNG.Repositories
             _devices = database.GetCollection<Device>(settings.DevicesCollectionName);
         }
 
-        //get all devices
-        public List<Device> Get() =>
+        public List<Device> GetAll() =>
             _devices.Find(device => true).ToList();
 
-        //get device by ID
-        public Device Get(string id) =>
+        public Device GetById(string id) =>
             _devices.Find<Device>(device => device.Id == id).FirstOrDefault();
 
-        //CREATE device
         public Device Create(Device device)
         {
             _devices.InsertOne(device);
             return device;
         }
 
-        //UPDATE device
         public void Update(string id, Device deviceIn) =>
             _devices.ReplaceOne(device => device.Id == id, deviceIn);
 
-        //DELETE device
         public void Remove(string id) =>
             _devices.DeleteOne(device => device.Id == id);
 

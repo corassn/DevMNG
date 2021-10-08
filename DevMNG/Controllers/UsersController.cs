@@ -17,16 +17,14 @@ namespace DevMNG.Controllers
             _userRepository = userRepository;
         }
 
-        //get all users
         [HttpGet]
-        public ActionResult<List<User>> Get() =>
-            _userRepository.Get();
+        public ActionResult<List<User>> GetAll() =>
+            _userRepository.GetAll();
 
-        //get user by ID
         [HttpGet("{id:length(24)}", Name = "GetUser")]
         public ActionResult<User> Get(string id)
         {
-            var user = _userRepository.Get(id);
+            var user = _userRepository.GetById(id);
 
             if (user == null)
             {
@@ -36,7 +34,6 @@ namespace DevMNG.Controllers
             return user;
         }
 
-        //CREATE new user
         [HttpPost]
         public ActionResult<User> Create(User user)
         {
@@ -45,11 +42,10 @@ namespace DevMNG.Controllers
             return CreatedAtRoute("GetUser", new { id = user.Id.ToString() }, user);
         }
 
-        //UPDATE existing user
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, User userIn)
         {
-            var user = _userRepository.Get(id);
+            var user = _userRepository.GetById(id);
 
             if (user == null)
             {
@@ -61,11 +57,10 @@ namespace DevMNG.Controllers
             return NoContent();
         }
 
-        //DELETE user
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var user = _userRepository.Get(id);
+            var user = _userRepository.GetById(id);
 
             if (user == null)
             {

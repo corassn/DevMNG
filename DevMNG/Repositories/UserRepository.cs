@@ -19,26 +19,21 @@ namespace DevMNG.Repositories
             _users = database.GetCollection<User>(settings.UsersCollectionName);
         }
 
-        //get all users
-        public List<User> Get() =>
+        public List<User> GetAll() =>
             _users.Find(user => true).ToList();
 
-        //get users by ID
-        public User Get(string id) =>
+        public User GetById(string id) =>
             _users.Find<User>(user => user.Id == id).FirstOrDefault();
 
-        //CREATE user
         public User Create(User user)
         {
             _users.InsertOne(user);
             return user;
         }
 
-        //UPDATE user
         public void Update(string id, User userIn) =>
             _users.ReplaceOne(user => user.Id == id, userIn);
 
-        //DELETE user
         public void Remove(string id) =>
             _users.DeleteOne(user => user.Id == id);
     }

@@ -18,16 +18,14 @@ namespace DevMNG.Controllers
             _deviceRepository = deviceRepository;
         }
 
-        //get all devices
         [HttpGet]
-        public ActionResult<List<Device>> Get() =>
-            _deviceRepository.Get();
+        public ActionResult<List<Device>> GetAll() =>
+            _deviceRepository.GetAll();
 
-        //get device by ID
         [HttpGet("{id:length(24)}", Name = "GetDevice")]
-        public ActionResult<Device> Get(string id)
+        public ActionResult<Device> GetById(string id)
         {
-            var device = _deviceRepository.Get(id);
+            var device = _deviceRepository.GetById(id);
 
             if (device == null)
             {
@@ -37,7 +35,6 @@ namespace DevMNG.Controllers
             return device;
         }
 
-        //CREATE new device
         [HttpPost]
         public ActionResult<Device> Create(Device device)
         {
@@ -46,11 +43,10 @@ namespace DevMNG.Controllers
             return CreatedAtRoute("GetDevice", new { id = device.Id.ToString() }, device);
         }
 
-        //UPDATE existing device
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Device deviceIn)
         {
-            var device = _deviceRepository.Get(id);
+            var device = _deviceRepository.GetById(id);
 
             if(device == null)
             {
@@ -62,11 +58,10 @@ namespace DevMNG.Controllers
             return NoContent();
         }
 
-        //DELETE device
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var device = _deviceRepository.Get(id);
+            var device = _deviceRepository.GetById(id);
 
             if (device == null)
             {
