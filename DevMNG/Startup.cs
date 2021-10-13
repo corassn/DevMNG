@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using System;
 
 namespace DevMNG
 {
@@ -23,6 +24,8 @@ namespace DevMNG
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //var mongoDbSettings = Configuration.GetSection(nameof(DevMNGDatabaseSettings)).Get<DevMNGDatabaseSettings>();
+
             services.Configure<DevMNGDatabaseSettings>(
             Configuration.GetSection(nameof(DevMNGDatabaseSettings)));
 
@@ -31,6 +34,12 @@ namespace DevMNG
 
             services.AddSingleton<DeviceRepository>();
             services.AddSingleton<UserRepository>();
+
+            //services.AddIdentity<User, Role>()
+            //    .AddMongoDbStores<User, Role, Guid>
+            //    (
+            //        mongoDbSettings.ConnectionString, mongoDbSettings.DatabaseName
+            //    );
 
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options => options.UseMemberCasing());

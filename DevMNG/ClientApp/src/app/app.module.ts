@@ -1,32 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { HeaderComponent } from './header/header.component';
+import { DeviceListComponent } from './device-list/device-list.component';
+import { DeviceInfoComponent } from './device-info/device-info.component';
+import { DeviceEditComponent } from './device-edit/device-edit.component';
+import { DeviceNewComponent } from './device-new/device-new.component';
+import { DeviceRestartComponent } from './device-restart/device-restart.component';
+import { DeviceItemComponent } from './device-list/device-item/device-item.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
+    HeaderComponent,
+    DeviceListComponent,
+    DeviceInfoComponent,
+    DeviceEditComponent,
+    DeviceNewComponent,
+    DeviceRestartComponent,
+    DeviceItemComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
+    BrowserModule,
+    AppRoutingModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

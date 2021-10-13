@@ -1,6 +1,6 @@
-﻿using MongoDB.AspNet.Identity;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MongoDbGenericRepository.Attributes;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DevMNG.Entities
 {
+    [CollectionName("Devices")]
     public class Device
     {
         [BsonId]
@@ -34,5 +35,7 @@ namespace DevMNG.Entities
         public string Processor { get; set; }
         [BsonElement("RAM")]
         public string RAM { get; set; }
+        [BsonElement("user")]
+        public User User { get; set; }
     }
 }

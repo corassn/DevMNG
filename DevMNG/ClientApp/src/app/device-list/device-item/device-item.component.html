@@ -1,0 +1,8 @@
+<div class="ms-2 me-auto">
+    <div class="fw-bold">{{device.name}} | {{device.manufacturer}} </div>
+    {{device.type}}
+</div>
+<span class="badge bg-dark" style="margin-right: 10px">Used by: Username, Location</span>
+<button class="btn btn-secondary" type="button" (click)="onView()">View</button>
+<button class="btn btn-danger" type="button" (click)="onDelete()">Delete</button>
+

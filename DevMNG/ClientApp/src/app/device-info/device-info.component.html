@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Name | Manufacturer
+            <button class="btn btn-sm btn-success" type="button" (click)="onEdit()">Edit</button>
+        </h3>
+        <ul>
+            <li>Type: </li>
+            <li>Operating System: </li>
+            <li>OS Version: </li>
+            <li>Processor: </li>
+            <li>RAM amount: </li>
+        </ul>
+        <hr>
+        <p>This device is used by:</p>
+        <p>Location:</p>
+        <button class="btn btn-secondary" [disabled]="isUsed">Reserve</button>
+    </div>
+</div>

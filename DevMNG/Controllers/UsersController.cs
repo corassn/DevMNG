@@ -39,7 +39,7 @@ namespace DevMNG.Controllers
         {
             _userRepository.Create(user);
 
-            return CreatedAtRoute("GetUser", new { id = user.Id.ToString() }, user);
+            return CreatedAtRoute("GetUser", new { id = user.Id}, user);
         }
 
         [HttpPut("{id:length(24)}")]

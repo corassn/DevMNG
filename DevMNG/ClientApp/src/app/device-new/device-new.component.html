@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-sm-12">
+        <h3>Add new device</h3>
+        <hr>
+        <form #addForm="ngForm" 
+        (ngSubmit)="onSubmit(addForm)"
+        autocomplete="off">
+            <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-3 col-form-label">Name</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                    class="form-control" 
+                    id="name" 
+                    placeholder="Enter device name..."
+                    name="name"
+                    ngModel name="name"
+                    required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-3 col-form-label">Manufacturer</label>
+                <div class="col-sm-9">
+                    <input type="text"
+                     class="form-control" 
+                     id="manufacturer" 
+                     placeholder="Enter device manufacturer..."
+                     name="manufacturer"
+                     ngModel manufacturer="manufacturer"
+                     required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-3 col-form-label">Type</label>
+                <div class="col-sm-9">
+                    <input type="text" 
+                    class="form-control" 
+                    id="type" 
+                    placeholder="Enter the type of device..."
+                    name="type"
+                    ngModel type="type"
+                    required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-3 col-form-label">Operating System</label>
+                <div class="col-sm-9">
+                    <input type="text" 
+                    class="form-control" 
+                    id="os" 
+                    placeholder="Enter Operating System..."
+                    name="os"
+                    ngModel os="os"
+                    required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-3 col-form-label">OS Version</label>
+                <div class="col-sm-9">
+                    <input type="text" 
+                    class="form-control" 
+                    id="osversion" 
+                    placeholder="Enter OS Version..."
+                    name="osversion"
+                    ngModel manufacturer="osversion"
+                    required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-3 col-form-label">Processor</label>
+                <div class="col-sm-9">
+                    <input type="text" 
+                    class="form-control" 
+                    id="processor" 
+                    placeholder="Enter processor..."
+                    name="processor"
+                    ngModel processor="processor"
+                    required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="colFormLabel" class="col-sm-3 col-form-label">RAM ammount</label>
+                <div class="col-sm-9">
+                    <input type="text" 
+                    class="form-control" 
+                    id="ram" 
+                    placeholder="Enter RAM amount..."
+                    name="ram"
+                    ngModel ram="ram"
+                    required>
+                </div>
+                <span class="help-block" *ngIf="!addForm.valid && addForm.touched">Please complete all fields!</span>
+            </div>
+            <button class="btn btn-success" 
+            type="submit"
+             [disabled]="!addForm.valid">Save</button>
+            <button class="btn btn-danger" type="button" (click)="onCancel()">Cancel</button>
+        </form>
+    </div>
+</div>
